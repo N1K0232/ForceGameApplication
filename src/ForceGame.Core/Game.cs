@@ -3,7 +3,7 @@ using Timer = System.Timers.Timer;
 
 namespace ForceGame.Core;
 
-public class Game : IGame
+public partial class Game : IGame
 {
     private Player _firstPlayer = null;
     private Player _secondPlayer = null;
@@ -97,27 +97,16 @@ public class Game : IGame
         }
     }
 
-    private void Timer_Elapsed(object sender, ElapsedEventArgs e)
-    {
-        if (_timer.Enabled)
-        {
-            _timeCount++;
-        }
-    }
-
     public void Stop()
     {
         ThrowIfDisposed();
         StopCore();
     }
 
-    private void StopCore()
+    public void Resume()
     {
-        if (_gameActive)
-        {
-            _timer.Stop();
-            _gameActive = false;
-        }
+        _timer.Start();
+        _gameActive = true;
     }
 
     public bool Play(int row, int column, int color)
@@ -169,61 +158,5 @@ public class Game : IGame
         }
 
         return totalCount == 42;
-    }
-
-    private bool CheckSpace(int row, int column) => !CheckSpace(row, column, 0);
-
-    private bool CheckSpace(int row, int column, int color) => _field[row, column] == color;
-
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    private void Dispose(bool disposing)
-    {
-        if (disposing && !_disposed)
-        {
-            StopCore();
-            ClearField();
-
-            _firstPlayer = null;
-            _secondPlayer = null;
-
-            _field = null;
-
-            _timer.Dispose();
-            _timer = null;
-
-            _disposed = true;
-        }
-    }
-
-    private void ThrowIfDisposed()
-    {
-        if (_disposed)
-        {
-            throw new ObjectDisposedException(GetType().FullName);
-        }
-    }
-
-    private void Initialize()
-    {
-        _timer = new Timer(1000);
-        _field = new int[7, 6];
-
-        ClearField();
-    }
-
-    private void ClearField()
-    {
-        for (int i = 0; i < 7; i++)
-        {
-            for (int j = 0; j < 6; j++)
-            {
-                _field[i, j] = 0;
-            }
-        }
     }
 }

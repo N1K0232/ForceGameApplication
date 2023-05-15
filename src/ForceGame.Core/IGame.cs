@@ -14,6 +14,8 @@ public interface IGame : IDisposable
 
     void Stop();
 
+    void Resume();
+
     bool Play(int row, int column, int color);
 
     bool CheckWin(int row, int column);
