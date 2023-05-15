@@ -137,7 +137,7 @@ public class Game : IGame
             throw new ArgumentOutOfRangeException(nameof(color), "invalid color");
         }
 
-        bool hasColor = CheckSpace(row, column);
+        bool hasColor = CheckSpace(row, column, color);
         if (hasColor)
         {
             return false;
