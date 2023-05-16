@@ -1,8 +1,9 @@
-﻿namespace ForceGame.Core;
-
-public class Player
+﻿namespace ForceGame.Core
 {
-    public string Name { get; set; }
+    public class Player
+    {
+        public string Name { get; set; }
 
-    public int Victories { get; set; } = 0;
+        public int Victories { get; set; } = 0;
+    }
 }

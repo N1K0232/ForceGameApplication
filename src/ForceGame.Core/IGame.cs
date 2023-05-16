@@ -1,24 +1,27 @@
-﻿namespace ForceGame.Core;
+﻿using System;
 
-public interface IGame : IDisposable
+namespace ForceGame.Core
 {
-    Player FirstPlayer { get; set; }
+    public interface IGame : IDisposable
+    {
+        Player FirstPlayer { get; set; }
 
-    Player SecondPlayer { get; set; }
+        Player SecondPlayer { get; set; }
 
-    int Turn { get; }
+        int Turn { get; }
 
-    bool IsGameActive { get; }
+        bool IsGameActive { get; }
 
-    void Start();
+        void Start();
 
-    void Stop();
+        void Stop();
 
-    void Resume();
+        void Resume();
 
-    bool Play(int row, int column, int color);
+        bool Play(int row, int column, int color);
 
-    bool CheckWin(int row, int column);
+        bool CheckWin(int row, int column);
 
-    bool CheckParity();
+        bool CheckParity();
+    }
 }
