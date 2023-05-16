@@ -19,8 +19,11 @@ public partial class Game : IGame
     private bool _disposed = false;
 
 
-    public Game()
+    public Game(Player firstPlayer, Player secondPlayer)
     {
+        FirstPlayer = firstPlayer;
+        SecondPlayer = secondPlayer;
+
         Initialize();
     }
 
