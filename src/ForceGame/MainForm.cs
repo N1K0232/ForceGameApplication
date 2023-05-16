@@ -30,5 +30,9 @@ public partial class MainForm : Form
         var secondPlayer = new Player { Name = secondPlayerName };
 
         var game = new Game(firstPlayer, secondPlayer);
+        var gameForm = new GameForm(game);
+
+        Hide();
+        gameForm.ShowDialog();
     }
 }

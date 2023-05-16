@@ -47,9 +47,7 @@ public partial class MainForm : Form
         playButton = new Button();
         
         SuspendLayout();
-        // 
-        // txtFirstPlayer
-        // 
+
         txtFirstPlayer.BackColor = Color.White;
         txtFirstPlayer.BorderStyle = BorderStyle.FixedSingle;
         txtFirstPlayer.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
@@ -58,9 +56,8 @@ public partial class MainForm : Form
         txtFirstPlayer.Name = "txtFirstPlayer";
         txtFirstPlayer.Size = new Size(280, 36);
         txtFirstPlayer.TabIndex = 0;
-        // 
-        // txtSecondPlayer
-        // 
+
+
         txtSecondPlayer.BackColor = Color.White;
         txtSecondPlayer.BorderStyle = BorderStyle.FixedSingle;
         txtSecondPlayer.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
@@ -69,9 +66,8 @@ public partial class MainForm : Form
         txtSecondPlayer.Name = "txtSecondPlayer";
         txtSecondPlayer.Size = new Size(280, 36);
         txtSecondPlayer.TabIndex = 1;
-        // 
-        // playButton
-        // 
+
+
         playButton.FlatAppearance.BorderColor = Color.Blue;
         playButton.FlatAppearance.BorderSize = 2;
         playButton.FlatStyle = FlatStyle.Flat;
@@ -84,9 +80,8 @@ public partial class MainForm : Form
         playButton.Text = "Play";
         playButton.UseVisualStyleBackColor = true;
         playButton.Click += new EventHandler(OnPlayButtonClick);
-        // 
-        // lblFirstPlayer
-        // 
+
+
         lblFirstPlayer.AutoSize = true;
         lblFirstPlayer.BorderStyle = BorderStyle.FixedSingle;
         lblFirstPlayer.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
@@ -97,9 +92,8 @@ public partial class MainForm : Form
         lblFirstPlayer.TabIndex = 3;
         lblFirstPlayer.Text = "Player 1";
         lblFirstPlayer.TextAlign = ContentAlignment.MiddleLeft;
-        // 
-        // lblSecondPlayer
-        // 
+
+
         lblSecondPlayer.AutoSize = true;
         lblSecondPlayer.BorderStyle = BorderStyle.FixedSingle;
         lblSecondPlayer.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
@@ -110,9 +104,8 @@ public partial class MainForm : Form
         lblSecondPlayer.TabIndex = 4;
         lblSecondPlayer.Text = "Player 2";
         lblSecondPlayer.TextAlign = ContentAlignment.MiddleLeft;
-        // 
-        // MainForm
-        // 
+
+
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
