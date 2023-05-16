@@ -35,6 +35,18 @@ public partial class Game
         return currentColor == color;
     }
 
+    private void ChangeTurn(int color)
+    {
+        if (color == 1 && _currentTurn == 1)
+        {
+            _currentTurn = 2;
+        }
+        else
+        {
+            _currentTurn = 1;
+        }
+    }
+
     private int GetColor(int row, int column)
     {
         try
