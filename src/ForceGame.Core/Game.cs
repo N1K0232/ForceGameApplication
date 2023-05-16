@@ -100,7 +100,7 @@ public partial class Game : IGame
     public void Stop()
     {
         ThrowIfDisposed();
-        StopCore();
+        StopInternal();
     }
 
     public void Resume()
@@ -111,29 +111,22 @@ public partial class Game : IGame
 
     public bool Play(int row, int column, int color)
     {
-        if (row < 0 || row > _field.GetLength(0))
+        if (row <= 0 || row > _field.GetLength(0))
         {
             throw new ArgumentOutOfRangeException(nameof(row), "the row is invalid");
         }
 
-        if (column < 0 || column > _field.GetLength(1))
+        if (column <= 0 || column > _field.GetLength(1))
         {
             throw new ArgumentOutOfRangeException(nameof(column), "the column is invalid");
         }
 
-        if (color < 0 || color > 2)
+        if (color <= 0 || color > 2)
         {
             throw new ArgumentOutOfRangeException(nameof(color), "invalid color");
         }
 
-        bool hasColor = CheckSpace(row, column, color);
-        if (hasColor)
-        {
-            return false;
-        }
-
-        _field[row, column] = color;
-        return true;
+        return SetValue(row, column, color);
     }
 
     public bool CheckWin(int row, int column)

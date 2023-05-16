@@ -13,7 +13,7 @@ public partial class Game
         }
     }
 
-    private void StopCore()
+    private void StopInternal()
     {
         if (_gameActive)
         {
@@ -24,7 +24,29 @@ public partial class Game
 
     private bool CheckSpace(int row, int column) => !CheckSpace(row, column, 0);
 
-    private bool CheckSpace(int row, int column, int color) => _field[row, column] == color;
+    private bool CheckSpace(int row, int column, int color)
+    {
+        int currentColor = GetColor(row, column);
+        if (currentColor < 0)
+        {
+            return false;
+        }
+
+        return currentColor == color;
+    }
+
+    private int GetColor(int row, int column)
+    {
+        try
+        {
+            int color = _field[row, column];
+            return color;
+        }
+        catch (Exception)
+        {
+            return -1;
+        }
+    }
 
     public void Dispose()
     {
@@ -36,7 +58,7 @@ public partial class Game
     {
         if (disposing && !_disposed)
         {
-            StopCore();
+            StopInternal();
             ClearField();
 
             _firstPlayer = null;
@@ -73,8 +95,22 @@ public partial class Game
         {
             for (int j = 0; j < 6; j++)
             {
-                _field[i, j] = 0;
+                SetValueCore(i, j, 0);
             }
         }
     }
+
+    private bool SetValue(int row, int column, int color)
+    {
+        bool hasColor = CheckSpace(row, column, color);
+        if (hasColor)
+        {
+            return false;
+        }
+
+        SetValueCore(row, column, color);
+        return true;
+    }
+
+    private void SetValueCore(int row, int column, int color) => _field[row, column] = color;
 }
